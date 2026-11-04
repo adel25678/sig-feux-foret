@@ -1,0 +1,30 @@
+name: Mise à jour du risque feu
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"   # toutes les 3 heures
+  workflow_dispatch:          # permet aussi de le lancer à la main
+
+permissions:
+  contents: write
+
+jobs:
+  maj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests pandas
+      - name: Lancer le script
+        env:
+          MF_API_KEY: ${{ secrets.MF_API_KEY }}
+        run: python maj_risque.py
+      - name: Enregistrer le résultat
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add risque_test.csv
+          git diff --cached --quiet || git commit -m "Mise à jour automatique"
+          git push
