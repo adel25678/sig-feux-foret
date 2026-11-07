@@ -71,7 +71,18 @@ if not GARDER_INCOMPLETES:
 if len(df) < MIN_STATIONS:
     raise SystemExit(f"Seulement {len(df)} stations : fichier NON écrasé.")
 
+def fmt(v, modele):
+    return "n/d" if pd.isna(v) else modele.format(v)
+
+df["temp_txt"] = df["temp"].map(lambda v: fmt(v, "{:.1f} °C"))
+df["humidite_txt"] = df["humidite"].map(lambda v: fmt(v, "{:.0f} %"))
+df["vent_txt"] = df["vent"].map(lambda v: fmt(v, "{:.1f} km/h"))
+df["heure_obs"] = (pd.to_datetime(df["date_obs"], utc=True)
+                   .dt.tz_convert("Europe/Paris")
+                   .dt.strftime("%d/%m/%Y %H:%M"))
+
 colonnes = ["id_station", "nom", "lat", "lon", "temp", "humidite", "vent",
+            "temp_txt", "humidite_txt", "vent_txt", "heure_obs",
             "date_obs", "nb_criteres", "niveau_risque", "date_maj"]
 df[colonnes].to_csv(SORTIE, index=False, encoding="utf-8")
 
