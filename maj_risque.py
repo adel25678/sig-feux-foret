@@ -3,6 +3,9 @@ import requests
 import pandas as pd
 from datetime import datetime, timedelta, timezone
 
+ALTITUDE_MAX = 2000   # m : au-dessus, les stations sont écartées
+TEMP_MIN = 15         # °C : en dessous, le niveau reste Faible
+
 # ---------- Réglages ----------
 BASE = "https://public-api.meteofrance.fr/public/DPPaquetObs/v2"
 SORTIE = "risque_test.csv"
@@ -26,6 +29,8 @@ def calcul_risque(temp, hum, vent):
     if pd.isna(temp) or pd.isna(hum) or pd.isna(vent):
         return None, "Données incomplètes"
     nb = int(temp > SEUIL_TEMP) + int(hum < SEUIL_HUM) + int(vent > SEUIL_VENT)
+    if temp < TEMP_MIN:
+        return nb, "Faible"
     return nb, NIVEAUX[nb]
 
 # ---------- 1. Télécharger toutes les stations ----------
@@ -53,6 +58,10 @@ obs["id_station"] = obs["geo_id_insee"].astype(str).str.zfill(8)
 stations = pd.read_csv("stations.csv", dtype={"id_station": str})
 df = stations.merge(obs[["id_station", "t", "u", "ff", "validity_time"]],
                     on="id_station", how="inner")
+avant = len(df)
+df = df[df["altitude"].isna() | (df["altitude"] <= ALTITUDE_MAX)]
+print(f"{avant - len(df)} stations exclues (altitude > {ALTITUDE_MAX} m)")
+
 df["temp"] = (df["t"] - 273.15).round(1)
 df["humidite"] = df["u"]
 df["vent"] = (df["ff"] * 3.6).round(1)
@@ -62,6 +71,7 @@ df["date_obs"] = df["validity_time"]
 res = df.apply(lambda r: pd.Series(calcul_risque(r["temp"], r["humidite"], r["vent"])), axis=1)
 df["nb_criteres"] = res[0].astype("Int64")
 df["niveau_risque"] = res[1]
+print(f"{((df['temp'] < TEMP_MIN) & (df['nb_criteres'] > 0)).sum()} stations ramenées à Faible (T < {TEMP_MIN} °C)")
 df["date_maj"] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
 
 if not GARDER_INCOMPLETES:
