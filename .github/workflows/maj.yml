@@ -2,7 +2,7 @@ name: Mise à jour du risque feu
 
 on:
   schedule:
-    - cron: "17 */3 * * *"   # toutes les 3 heures
+       - cron: "17 * * * *"   # toutes les  heures
   workflow_dispatch:          # permet aussi de le lancer à la main
 
 permissions:
