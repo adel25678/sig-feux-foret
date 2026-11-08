@@ -3,108 +3,117 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Risque feux de forêt en France — règle 30-30-30</title>
+<meta name="color-scheme" content="light">
+<title>Risque de feux de forêt en France — règle 30-30-30</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f3f5f7; --surface:#ffffff; --ink:#1b2430; --muted:#566170; --line:#d5dbe1; --link:#0f5c6e;
-  --faible:#2e9e44; --modere:#f2c811; --eleve:#f28c28; --tres:#d7191c;
-  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
-  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#141a21; --surface:#1c242d; --ink:#e8edf2; --muted:#9aa6b3; --line:#2f3a46; --link:#6cc4d8;}
+  --ink:#0f1d2e; --slate:#4f5e6d; --rule:#d8dee5; --wash:#f3f6f9; --accent:#0b5fa5; --navy:#0b1f3a;
+  --g:#2e9e44; --y:#f2c811; --o:#f28c28; --r:#d7191c;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif; --sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.6 var(--body)}
-a{color:var(--link)}
-a:focus-visible,iframe:focus-visible{outline:3px solid var(--link);outline-offset:2px}
-.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
-header.top{border-bottom:1px solid var(--line);background:var(--surface)}
-header.top .wrap{display:flex;gap:1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-top:.8rem;padding-bottom:.8rem}
-header.top strong{font:700 1.25rem var(--display);letter-spacing:.01em}
-nav a{margin-left:1.1rem;text-decoration:none;color:var(--ink);font-size:.95rem}
-nav a:hover{text-decoration:underline}
-h1,h2{font-family:var(--display);line-height:1.05;margin:0}
-h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:700;max-width:16ch}
-h2{font-size:clamp(1.7rem,3.5vw,2.3rem);font-weight:700;margin-bottom:.8rem}
-section{padding:3rem 0;border-top:1px solid var(--line)}
-.hero{padding:3.5rem 0 3rem;border-top:0}
-.hero p.lead{max-width:56ch;color:var(--muted);font-size:1.1rem;margin:1rem 0 2rem}
-.rule{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:var(--surface)}
-.rule div{padding:1.1rem 1.25rem;border-left:1px solid var(--line)}
-.rule div:first-child{border-left:0}
-.rule .n{font:700 clamp(3.2rem,9vw,5.5rem)/1 var(--display)}
-.rule .u{font:600 1.5rem var(--display);color:var(--muted);margin-left:.25rem}
-.rule .t{display:block;color:var(--muted);font-size:.92rem;margin-top:.35rem}
-.note{color:var(--muted);font-size:.95rem;margin-top:.9rem;max-width:62ch}
-.stats{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1rem;padding:0;list-style:none}
-.stats li{display:flex;align-items:center;gap:.5rem;padding:.45rem .8rem;border:1px solid var(--line);background:var(--surface);font-size:.95rem}
-.stats b{font:700 1.4rem/1 var(--display)}
-.dot{width:.85rem;height:.85rem;border-radius:50%;flex:none}
-.d0{background:var(--faible)}.d1{background:var(--modere)}.d2{background:var(--eleve)}.d3{background:var(--tres)}
-.meta{color:var(--muted);font-size:.92rem;margin:0 0 1rem}
-.map{border:1px solid var(--line);background:var(--surface)}
-.map iframe{display:block;width:100%;height:72vh;min-height:30rem;border:0}
-table{border-collapse:collapse;width:100%;background:var(--surface)}
-th,td{text-align:left;padding:.7rem .9rem;border:1px solid var(--line);vertical-align:top}
-th{font:600 1.1rem var(--display)}
-td .dot{display:inline-block;margin-right:.5rem;vertical-align:-.1rem}
-.tips{columns:2 18rem;column-gap:2rem;padding-left:1.2rem;margin:0}
+body{margin:0;background:#fff;color:var(--ink);font:1.06rem/1.7 var(--sans);font-variant-numeric:tabular-nums}
+a{color:var(--accent)}
+a:focus-visible,iframe:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:60rem;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0}
+h2{font-size:1.75rem;margin-bottom:1rem}
+h2 span{color:var(--accent);margin-right:.7rem;font-weight:400}
+h3{font-size:1.2rem;margin-bottom:.6rem}
+p{margin:0 0 1rem}
+.cap{font-size:.93rem;color:var(--slate);line-height:1.55}
+.cap b{color:var(--ink);font-weight:600}
+
+header{background:var(--navy);color:#fff}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-top:.9rem;padding-bottom:.9rem}
+header strong{font:600 1.05rem var(--serif)}
+nav a{color:#cfdcec;text-decoration:none;margin-left:1.4rem;font-size:.95rem}
+nav a:hover{color:#fff;text-decoration:underline;text-underline-offset:.3rem}
+
+.hero{padding:3.5rem 0 3rem;border-bottom:1px solid var(--rule)}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);max-width:20ch;letter-spacing:-.01em;margin-bottom:1.4rem}
+.abstract{max-width:42rem;border-left:3px solid var(--accent);padding-left:1.2rem;margin-bottom:2rem}
+.abstract b{font-weight:600}
+.eq{background:var(--wash);border:1px solid var(--rule);padding:1.4rem 1.2rem;text-align:center;font:400 clamp(1.1rem,2.6vw,1.6rem)/1.5 var(--serif);overflow-x:auto}
+.eq i{font-style:italic}
+.eq-cap{margin-top:.7rem}
+
+section{padding:3rem 0;border-bottom:1px solid var(--rule)}
+table{width:100%;border-collapse:collapse;font-size:1rem}
+caption{text-align:left;padding-bottom:.7rem}
+th{font-weight:600;text-align:left;border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);padding:.55rem .8rem;font-size:.95rem}
+td{padding:.65rem .8rem;border-bottom:1px solid var(--rule);vertical-align:middle}
+tbody tr:last-child td{border-bottom:2px solid var(--ink)}
+.num{text-align:right}
+.sw{display:inline-block;width:.9rem;height:.9rem;margin-right:.6rem;vertical-align:-.1rem;border:1px solid rgba(15,29,46,.35)}
+.c0{background:var(--g)}.c1{background:var(--y)}.c2{background:var(--o)}.c3{background:var(--r)}
+.bar{display:block;height:.7rem;min-width:2px;background:var(--accent)}
+td.b{width:34%}
+.fig{border:1px solid var(--rule);background:var(--wash);padding:.6rem}
+.fig iframe{display:block;width:100%;height:72vh;min-height:30rem;border:0;background:#fff}
+.tips{columns:2 19rem;column-gap:2.5rem;padding-left:1.2rem;margin:0}
 .tips li{break-inside:avoid;margin-bottom:.8rem}
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:2rem}
-.cols h3{font:700 1.3rem var(--display);margin:0 0 .5rem}
-.cols ul{padding-left:1.2rem;margin:0}
-footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--muted);font-size:.9rem}
-@media (max-width:40rem){.rule{grid-template-columns:1fr}.rule div{border-left:0;border-top:1px solid var(--line)}.rule div:first-child{border-top:0}nav a{margin:0 1rem 0 0}}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));gap:2.5rem}
+.cols ul{margin:0;padding-left:1.2rem}.cols li{margin-bottom:.55rem}
+footer{padding:2rem 0 3rem;color:var(--slate);font-size:.92rem}
+@media (max-width:40rem){nav a{margin:0 1rem 0 0}.num{white-space:nowrap}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <strong>Risque feux de forêt</strong>
-  <nav aria-label="Sections"><a href="#carte">Carte</a><a href="#lecture">Lire la carte</a><a href="#prevention">Prévention</a><a href="#methode">Méthode</a></nav>
+<header><div class="wrap">
+  <strong>Risque feux de forêt · règle 30-30-30</strong>
+  <nav aria-label="Sections"><a href="#resultats">Résultats</a><a href="#carte">Carte</a><a href="#lecture">Niveaux</a><a href="#prevention">Prévention</a><a href="#methode">Méthode</a></nav>
 </div></header>
 
 <main>
-<section class="hero"><div class="wrap">
-  <h1>Trois seuils pour repérer un risque de feu</h1>
-  <p class="lead">Quand il fait chaud, que l’air est sec et que le vent souffle, un départ de feu se propage très vite. Cette carte applique la règle des 30-30-30 aux mesures des stations Météo-France de métropole.</p>
-  <div class="rule">
-    <div><span class="n">30</span><span class="u">°C</span><span class="t">Température supérieure à 30 °C</span></div>
-    <div><span class="n">30</span><span class="u">%</span><span class="t">Humidité de l’air inférieure à 30 %</span></div>
-    <div><span class="n">30</span><span class="u">km/h</span><span class="t">Vent supérieur à 30 km/h</span></div>
+<div class="hero"><div class="wrap">
+  <h1>Cartographier le risque de feu de forêt, station par station</h1>
+  <p class="abstract"><b>Résumé.</b> À partir des mesures de température, d’humidité et de vent des stations Météo-France de métropole, un script automatique évalue le nombre de seuils de la règle des 30-30-30 dépassés à chaque station et met à jour la carte plusieurs fois par jour. L’indicateur est simple et pédagogique ; il ne remplace pas les indices opérationnels (voir « Méthode et limites »).</p>
+  <div class="eq" role="math" aria-label="N égale le nombre de seuils dépassés">
+    <i>N</i> = [ <i>T</i> &gt; 30 °C ] + [ <i>H</i> &lt; 30 % ] + [ <i>V</i> &gt; 30 km·h<sup>−1</sup> ]
   </div>
-  <p class="note">Chaque condition remplie fait monter le niveau d’un cran. Les trois réunies donnent le niveau le plus élevé.</p>
+  <p class="cap eq-cap"><b>Règle de décision.</b> <i>N</i> est le nombre de seuils dépassés (0 à 3) ; chaque crochet vaut 1 si la condition est vraie, 0 sinon. <i>T</i> : température de l’air ; <i>H</i> : humidité relative ; <i>V</i> : vitesse moyenne du vent. Exception : si <i>T</i> &lt; 15 °C, le niveau reste « Faible ».</p>
+</div></div>
+
+<section id="resultats"><div class="wrap">
+  <h2><span>1</span>Répartition actuelle</h2>
+  <table>
+    <caption class="cap" id="cap1"><b>Tableau 1.</b> Répartition des stations par niveau de risque.</caption>
+    <thead><tr><th>Niveau</th><th class="num">Stations</th><th class="num">Part</th><th>Proportion</th></tr></thead>
+    <tbody id="rows"><tr><td colspan="4">Chargement des données…</td></tr></tbody>
+  </table>
+  <p class="cap" id="meta" style="margin-top:.8rem"></p>
 </div></section>
 
 <section id="carte"><div class="wrap">
-  <h2>La carte, station par station</h2>
-  <ul class="stats" id="stats" aria-live="polite"><li>Chargement des données…</li></ul>
-  <p class="meta" id="meta"></p>
-  <div class="map">
+  <h2><span>2</span>Carte</h2>
+  <div class="fig">
     <iframe title="Carte du risque feux de forêt par station météo" loading="lazy"
       src="https://www.arcgis.com/apps/mapviewer/index.html?webmap=1826cadebfc24802bf6eac57f281392e&amp;center=2.3,46.6&amp;scale=9244648"></iframe>
   </div>
-  <p class="note">Si la carte ne s’affiche pas ici, <a href="https://www.arcgis.com/apps/mapviewer/index.html?webmap=1826cadebfc24802bf6eac57f281392e" target="_blank" rel="noopener">ouvrez-la dans un nouvel onglet</a>. Cliquez sur une station pour voir ses mesures.</p>
+  <p class="cap" style="margin-top:.8rem"><b>Figure 1.</b> Niveau de risque à chaque station météorologique de métropole. Cliquer sur un point affiche ses mesures. Si la carte ne s’affiche pas, <a href="https://www.arcgis.com/apps/mapviewer/index.html?webmap=1826cadebfc24802bf6eac57f281392e" target="_blank" rel="noopener">l’ouvrir dans un nouvel onglet</a>.</p>
 </div></section>
 
 <section id="lecture"><div class="wrap">
-  <h2>Lire les couleurs</h2>
+  <h2><span>3</span>Niveaux de risque</h2>
   <table>
-    <thead><tr><th>Niveau</th><th>Conditions remplies</th><th>Ce que ça signifie</th></tr></thead>
+    <caption class="cap"><b>Tableau 2.</b> Correspondance entre le nombre de seuils dépassés et le niveau.</caption>
+    <thead><tr><th>Niveau</th><th class="num">Seuils dépassés (<i>N</i>)</th><th>Interprétation</th></tr></thead>
     <tbody>
-      <tr><td><span class="dot d0"></span>Faible</td><td>0 sur 3</td><td>Aucun des trois seuils n’est atteint.</td></tr>
-      <tr><td><span class="dot d1"></span>Modéré</td><td>1 sur 3</td><td>Un seuil est dépassé : à surveiller.</td></tr>
-      <tr><td><span class="dot d2"></span>Élevé</td><td>2 sur 3</td><td>Les conditions favorisent le départ et la propagation d’un feu.</td></tr>
-      <tr><td><span class="dot d3"></span>Très élevé</td><td>3 sur 3</td><td>Chaleur, air sec et vent fort réunis : situation la plus dangereuse.</td></tr>
+      <tr><td><span class="sw c0"></span>Faible</td><td class="num">0</td><td>Aucun seuil dépassé.</td></tr>
+      <tr><td><span class="sw c1"></span>Modéré</td><td class="num">1</td><td>Un seuil dépassé : à surveiller.</td></tr>
+      <tr><td><span class="sw c2"></span>Élevé</td><td class="num">2</td><td>Les conditions favorisent le départ et la propagation d’un feu.</td></tr>
+      <tr><td><span class="sw c3"></span>Très élevé</td><td class="num">3</td><td>Chaleur, air sec et vent fort réunis : situation la plus défavorable.</td></tr>
     </tbody>
   </table>
 </div></section>
 
 <section id="prevention"><div class="wrap">
-  <h2>Les bons réflexes</h2>
+  <h2><span>4</span>Prévention</h2>
+  <p>Presque tous les feux de forêt ont une origine humaine. Quelques gestes réduisent fortement le risque.</p>
   <ul class="tips">
     <li>Ne jetez jamais un mégot, par la fenêtre d’une voiture ou en forêt.</li>
     <li>Pas de barbecue, de feu de camp ni de feu d’artifice en forêt ou à proximité en période à risque.</li>
@@ -117,20 +126,21 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--mute
 </div></section>
 
 <section id="methode"><div class="wrap">
-  <h2>Méthode et limites</h2>
+  <h2><span>5</span>Méthode et limites</h2>
   <div class="cols">
-    <div><h3>D’où viennent les données</h3>
+    <div><h3>Données et traitement</h3>
       <ul>
-        <li>Mesures de température, d’humidité et de vent des stations Météo-France, via son API d’observations.</li>
-        <li>Un script automatique les récupère plusieurs fois par jour, applique la règle des 30-30-30 et met à jour la carte.</li>
-        <li>Les mesures datent d’environ 20 minutes avant le traitement, le temps que les stations les transmettent.</li>
+        <li>Mesures de température, d’humidité et de vent des stations Météo-France, obtenues par son API d’observations.</li>
+        <li>Un script automatique les récupère plusieurs fois par jour, applique la règle et publie le résultat.</li>
+        <li>Les mesures précèdent le traitement d’environ 20 minutes, le temps de transmission des stations.</li>
+        <li>Seules les stations mesurant les trois paramètres sont retenues : environ 650 stations en métropole.</li>
       </ul></div>
-    <div><h3>Ce qu’il faut savoir</h3>
+    <div><h3>Limites et hypothèses</h3>
       <ul>
-        <li>Seules les stations qui mesurent à la fois température, humidité et vent sont affichées : environ 660 stations en métropole.</li>
-        <li>La règle des 30-30-30 est simplifiée. Elle ne tient pas compte de la sécheresse de la végétation, contrairement à la Météo des forêts de Météo-France, qui reste la référence officielle.</li>
+        <li>La règle est un indicateur simplifié. Elle ignore la sécheresse de la végétation, que prend en compte l’indice forêt-météo utilisé par Météo-France, qui reste la référence opérationnelle.</li>
         <li>Un point représente une station, pas une commune : le risque local peut différer.</li>
-        <li>Les seuils sont stricts : 30 °C pile ne compte pas comme supérieur à 30 °C.</li>
+        <li>Seuils stricts : 30 °C exactement ne compte pas comme supérieur à 30 °C.</li>
+        <li>Stations au-dessus de 2 000 m écartées (forêt rare ou absente) ; niveau « Faible » sous 15 °C. Ces deux valeurs sont des hypothèses de travail, non validées.</li>
       </ul></div>
   </div>
 </div></section>
@@ -141,42 +151,29 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--mute
 <script>
 (function(){
   var CSV="https://raw.githubusercontent.com/adel25678/sig-feux-foret/main/risque_test.csv";
-  var NIV=[["Faible","d0"],["Modéré","d1"],["Élevé","d2"],["Très élevé","d3"]];
-  var stats=document.getElementById("stats"), meta=document.getElementById("meta");
-
-  function parse(t){
-    var rows=[],r=[],f="",q=false,i,c;
-    for(i=0;i<t.length;i++){
-      c=t[i];
-      if(q){ if(c==='"'){ if(t[i+1]==='"'){f+='"';i++;} else q=false; } else f+=c; }
-      else if(c==='"') q=true;
-      else if(c===","){ r.push(f); f=""; }
-      else if(c==="\n"||c==="\r"){ if(c==="\r"&&t[i+1]==="\n")i++; r.push(f); rows.push(r); r=[]; f=""; }
-      else f+=c;
-    }
-    if(f||r.length){ r.push(f); rows.push(r); }
-    return rows;
-  }
-
-  fetch(CSV+"?t="+Date.now()).then(function(res){
-    if(!res.ok) throw new Error(res.status);
-    return res.text();
-  }).then(function(txt){
-    var rows=parse(txt).filter(function(r){return r.length>1;});
-    var head=rows[0], data=rows.slice(1);
-    var iN=head.indexOf("niveau_risque"), iH=head.indexOf("heure_obs");
-    var count={};
-    data.forEach(function(r){ count[r[iN]]=(count[r[iN]]||0)+1; });
-    stats.innerHTML="";
-    NIV.forEach(function(n){
-      var li=document.createElement("li");
-      li.innerHTML='<span class="dot '+n[1]+'"></span><b>'+(count[n[0]]||0)+'</b> '+n[0].toLowerCase();
-      stats.appendChild(li);
-    });
-    meta.textContent=data.length+" stations évaluées"+(iH>-1&&data[0]?" · dernières mesures : "+data[0][iH]+" (heure de Paris)":"");
-  }).catch(function(){
-    stats.innerHTML="<li>Les compteurs sont indisponibles pour le moment. La carte ci-dessous reste consultable.</li>";
-  });
+  var NIV=[["Faible","c0"],["Modéré","c1"],["Élevé","c2"],["Très élevé","c3"]];
+  var rows=document.getElementById("rows"),meta=document.getElementById("meta");
+  function parse(t){var out=[],r=[],f="",q=false,i,c;
+    for(i=0;i<t.length;i++){c=t[i];
+      if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++;}else q=false;}else f+=c;}
+      else if(c==='"')q=true;
+      else if(c===","){r.push(f);f="";}
+      else if(c==="\n"||c==="\r"){if(c==="\r"&&t[i+1]==="\n")i++;r.push(f);out.push(r);r=[];f="";}
+      else f+=c;}
+    if(f||r.length){r.push(f);out.push(r);}return out;}
+  fetch(CSV+"?t="+Date.now()).then(function(res){if(!res.ok)throw new Error(res.status);return res.text();})
+  .then(function(txt){
+    var all=parse(txt).filter(function(r){return r.length>1;}),head=all[0],data=all.slice(1);
+    var iN=head.indexOf("niveau_risque"),iH=head.indexOf("heure_obs"),n={},tot=data.length;
+    data.forEach(function(r){n[r[iN]]=(n[r[iN]]||0)+1;});
+    rows.innerHTML="";
+    NIV.forEach(function(v){
+      var k=n[v[0]]||0,p=tot?100*k/tot:0,tr=document.createElement("tr");
+      tr.innerHTML='<td><span class="sw '+v[1]+'"></span>'+v[0]+'</td><td class="num">'+k.toLocaleString("fr-FR")+'</td><td class="num">'+p.toLocaleString("fr-FR",{minimumFractionDigits:1,maximumFractionDigits:1})+' %</td><td class="b"><span class="bar" style="width:'+p.toFixed(1)+'%"></span></td>';
+      rows.appendChild(tr);});
+    document.getElementById("cap1").innerHTML="<b>Tableau 1.</b> Répartition des <i>n</i> = "+tot.toLocaleString("fr-FR")+" stations par niveau de risque.";
+    meta.textContent=iH>-1&&data[0]?"Dernières mesures : "+data[0][iH]+" (heure de Paris).":"";
+  }).catch(function(){rows.innerHTML='<tr><td colspan="4">Les données sont indisponibles pour le moment. La carte reste consultable.</td></tr>';});
 })();
 </script>
 </body>
